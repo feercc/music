@@ -1,18 +1,9 @@
 <script setup>
 import { RouterView } from "vue-router";
-import NavBar from "./components/NavBar/index.vue";
 </script>
 
 <template>
-  <h1>音乐播放器</h1>
-  <div class="container">
-    <header>
-      <div class="wrapper">
-        <NavBar />
-      </div>
-    </header>
-    <RouterView />
-  </div>
+  <RouterView />
 </template>
 
 <style scoped>
