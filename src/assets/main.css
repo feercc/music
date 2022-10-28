@@ -1,7 +1,6 @@
 @import "./base.css";
 
 #app {
-  min-width: 680px;
   margin: 0 auto;
 }
 
@@ -12,12 +11,7 @@ a,
   transition: 0.4s;
 }
 
-html{
-  min-width: 700px;
-}
-
-body{
-  min-width: 700px;
+body {
   background-color: #000;
   padding: 20px;
   background-image: -webkit-linear-gradient(200deg, #ccffffff, #000000);
