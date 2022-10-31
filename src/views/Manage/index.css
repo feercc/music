@@ -1,9 +1,0 @@
-.content .add{
-  margin-bottom: 20px;
-}
-.form-box{
-  margin-bottom: 10px;
-}
-.content :deep(.ant-form-item-label label) {
-  color: #fff;
-}

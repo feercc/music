@@ -22,8 +22,8 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "/notion": "http://192.168.10.23:8108/",
-      // "/music": "http://47.104.85.7:8108",
+      // "/notion": "http://192.168.10.23:8108/",
+      "/notion": "https://api.feer.icu/",
     },
   },
 });

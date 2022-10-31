@@ -1,35 +1,17 @@
 <script setup>
-import "aplayer/dist/APlayer.min.css";
-import APlayer from "aplayer";
 import { onMounted, ref, watch } from "vue";
 import { useNavStore } from "../../stores/nav";
 import NavBar from "../../components/NavBar/index.vue";
+import Music from "./music.vue";
 import { getMusicList } from "./service";
 
-const palyer = ref();
+const musicList = ref([]);
 
 const navStore = useNavStore();
 
-let ap = null;
-
-const cacheInfo = {
-  next_cursor: undefined,
-  has_more: false,
-};
-
 onMounted(() => {
-  ap = new APlayer({
-    container: palyer.value,
-    audio: [],
-    order: "list",
-    theme: "#ccffffff",
-  });
-  ap.list.show();
   getMusicList().then((res) => {
-    console.log(res.list);
-    ap.list.add(res.list);
-    cacheInfo.has_more = res.has_more;
-    cacheInfo.next_cursor = res.next_cursor;
+    musicList.value = res.list;
   });
 });
 
@@ -37,27 +19,17 @@ watch(
   () => navStore.activeNav,
   (value) => {
     getMusicList({ name: value }).then((res) => {
-      ap.list.add(res.list);
+      musicList.value = res.list;
     });
-    ap.list.clear();
   }
 );
 </script>
 
 <template>
-  <h1>music.feer.icu</h1>
-  <div class="container">
-    <header>
-      <div class="wrapper">
-        <NavBar />
-      </div>
-    </header>
+  <h1 class="py-10 text-center font-bold font text-3xl text-fuchsia-50">🎵</h1>
+  <NavBar />
+  <Music />
+  <div>
+    <audio :src="musicList.length ? musicList[0].url : ''" controls></audio>
   </div>
-  <main class="main">
-    <div ref="palyer"></div>
-  </main>
 </template>
-
-<style scoped>
-@import url("./index.css");
-</style>

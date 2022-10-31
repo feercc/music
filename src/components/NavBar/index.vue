@@ -5,17 +5,16 @@ const navStore = useNavStore();
 </script>
 
 <template>
-  <div class="btn-area">
+  <div class="flex justify-center flex-wrap">
     <span
       v-for="item in NAVCONFIG"
       :key="item.value"
       @click="navStore.changeNav(item.value)"
-      :class="['btn', navStore.activeNav === item.value && 'active']"
+      :class="[
+        'hover:opacity-100 opacity-60 border-solid border border-white px-3 py-1 mx-2 my-1 text-white cursor-pointer',
+        navStore.activeNav === item.value && 'hover:opacity-100',
+      ]"
       >{{ item.name }}</span
     >
   </div>
 </template>
-
-<style scoped>
-@import url("./index.css");
-</style>

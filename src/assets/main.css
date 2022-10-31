@@ -1,18 +1,1 @@
 @import "./base.css";
-
-#app {
-  margin: 0 auto;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-body {
-  background-color: #000;
-  padding: 20px;
-  background-image: -webkit-linear-gradient(200deg, #ccffffff, #000000);
-}

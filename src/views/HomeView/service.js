@@ -1,5 +1,6 @@
 import axios from "axios";
-const BASE_URL = "https://api.feer.icu";
+// const BASE_URL = "https://api.feer.icu";
+const BASE_URL = "/";
 export const getMusicList = (params = {}) => {
   return axios
     .get("/notion/music_database/list", {
