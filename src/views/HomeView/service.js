@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "https://192.168.10.23:8108";
+const BASE_URL = "https://api.feer.icu";
 export const getMusicList = (params = {}) => {
   return axios
     .get("/notion/music_database/list", {
@@ -10,7 +10,6 @@ export const getMusicList = (params = {}) => {
       baseURL: BASE_URL,
     })
     .then((res) => {
-      console.log(1, res);
       if (res.data) {
         const {
           data: { results = [], next_cursor, has_more },
