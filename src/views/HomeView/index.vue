@@ -2,7 +2,8 @@
 import { onMounted, ref, watch } from "vue";
 import { useNavStore } from "../../stores/nav";
 import NavBar from "../../components/NavBar/index.vue";
-import Music from "./music.vue";
+import Player from "../../components/Player/index.vue";
+import Loading from "../../components/Loading/index.vue";
 import { getMusicList } from "./service";
 
 const musicList = ref([]);
@@ -18,7 +19,7 @@ onMounted(() => {
 watch(
   () => navStore.activeNav,
   (value) => {
-    getMusicList({ name: value }).then((res) => {
+    getMusicList({ type: value }).then((res) => {
       musicList.value = res.list;
     });
   }
@@ -26,10 +27,9 @@ watch(
 </script>
 
 <template>
-  <h1 class="py-10 text-center font-bold font text-3xl text-fuchsia-50">🎵</h1>
+  <Loading></Loading>
   <NavBar />
-  <Music />
-  <div>
-    <audio :src="musicList.length ? musicList[0].url : ''" controls></audio>
+  <div class="px-40">
+    <Player :list="musicList" />
   </div>
 </template>

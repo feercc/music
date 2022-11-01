@@ -6,7 +6,7 @@ export const getMusicList = (params = {}) => {
     .get("/notion/music_database/list", {
       params: {
         ...params,
-        page_size: 10,
+        page_size: 100,
       },
       baseURL: BASE_URL,
     })
@@ -20,16 +20,17 @@ export const getMusicList = (params = {}) => {
           has_more,
           list: results.map((item) => {
             const {
-              properties: { Files, type, singer, name },
+              properties: { Files, URL, type, singer, name },
             } = item;
             return {
               name:
                 name["title"][0].plain_text + singer.rich_text[0].plain_text,
               // artist: 'artist',
-              url: Files.files[0].file.url,
-              type: type.select.name,
-              // cover: 'cover.jpg',
-              // lrc: 'lrc.lrc',
+              url: URL.url,
+              // url: Files?.files[0] ? Files?.files[0].file.url : "",
+              // type: type.select.name,
+              cover: "",
+              lrc: "",
               theme: type.select.color,
             };
           }),
