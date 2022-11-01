@@ -1,10 +1,10 @@
 import axios from "axios";
-import { message } from "ant-design-vue";
-import router from "../router";
+// import { message } from "ant-design-vue";
+// import router from "../router";
 
 const createAxiosByinterceptors = (config) => {
   const instance = axios.create({
-    baseURL: import.meta.env.DEV ? "/" : "http://47.104.85.7:8108",
+    baseURL: import.meta.env.BASE_API_URL,
     timeout: 1000, //超时配置
     withCredentials: true, //跨域携带cookie
     ...config, // 自定义配置覆盖基本配置
@@ -27,20 +27,12 @@ const createAxiosByinterceptors = (config) => {
     function (response) {
       // 对响应数据做点什么
       const { data, status } = response;
-      if (status === 200 || status === 201) return data;
+      if (status >= 200 && status < 300) return data;
       else {
-        message.error(message);
         return Promise.reject(response.data);
       }
     },
     function (error) {
-      // 对响应错误做点什么
-      if (error.response.status === 403) {
-        // 跳转到登录页面
-        // message.success("登录");
-        router.replace("/login");
-      }
-      message.error(error?.response?.data?.message || "服务端异常");
       return Promise.reject(error);
     }
   );
