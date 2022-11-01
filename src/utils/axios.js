@@ -4,7 +4,7 @@ import axios from "axios";
 
 const createAxiosByinterceptors = (config) => {
   const instance = axios.create({
-    baseURL: import.meta.env.BASE_API_URL,
+    baseURL: import.meta.env.VITE_BASE_API_URL,
     timeout: 1000, //超时配置
     withCredentials: true, //跨域携带cookie
     ...config, // 自定义配置覆盖基本配置
