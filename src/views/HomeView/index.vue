@@ -29,7 +29,7 @@ watch(
 <template>
   <Loading></Loading>
   <NavBar />
-  <div class="px-40">
+  <div class="px-6 md:px-24">
     <Player :list="musicList" />
   </div>
 </template>

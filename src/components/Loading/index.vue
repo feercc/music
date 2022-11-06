@@ -5,8 +5,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="text-center">
-    <svg
+  <div class="text-center pt-5">
+    <!-- <svg
       class="svg"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
@@ -22,7 +22,7 @@ const props = defineProps({
         fill="transparent"
         stroke-width="5"
       />
-    </svg>
+    </svg> -->
     <slot></slot>
   </div>
 </template>
